@@ -8,15 +8,15 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def hello():
-#     sc = SlackClient(os.environ['slackbot'])
+    sc = SlackClient(os.environ['slackbot'])
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
-#     sc.api_call(
-#         "chat.postMessage",
-#         channel="#general",
-#         text="adsd",
-#     )
+    sc.api_call(
+        "chat.postMessage",
+        channel="#general",
+        text="adsd",
+    )
 #     sc.rtm_connect()
 #     while True:
 #         for e in sc.rtm_read():
