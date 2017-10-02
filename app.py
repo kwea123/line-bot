@@ -1,6 +1,6 @@
 import os
 from slackclient import SlackClient
-# from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs
 import requests
 from flask import Flask, request, make_response, Response
 import json
