@@ -32,7 +32,7 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    body = {'challenge':request.args.get('challenge')}
+    body = {'challenge':'asd'}
     return json.dump(body)
 
 if __name__ == '__main__':
