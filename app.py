@@ -12,7 +12,7 @@ def hello():
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
-    slack_client.api_call(
+    sc.api_call(
         "chat.postMessage",
         channel="#general",
         text="adsd",
