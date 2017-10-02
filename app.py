@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST'])
 def hello():
-    dict = request.get_data()
+    dict = dict(request.get_data())
     sc = SlackClient(os.environ['slackbot'])
     sc.api_call("chat.postMessage",channel='#general',
-                text=str(dict))
+                text='df')
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
