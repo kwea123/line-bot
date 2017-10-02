@@ -2,17 +2,21 @@ import os
 from slackclient import SlackClient
 from bs4 import BeautifulSoup as bs
 import requests
-from flask import Flask
+from flask import Flask, request, make_response, Response
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/", methods=["GET"])
 def hello():
     sc = SlackClient(os.environ['slackbot'])
-    for ch in sc.api_call("channels.list")['channels']:
-        if ch['name'] == 'general':
-            ch_general = ch['id']
-    
+#     for ch in sc.api_call("channels.list")['channels']:
+#         if ch['name'] == 'general':
+#             ch_general = ch['id']
+    slack_client.api_call(
+        "chat.postMessage",
+        channel="#general",
+        text="adsd",
+    )
 #     sc.rtm_connect()
 #     while True:
 #         for e in sc.rtm_read():
@@ -30,7 +34,7 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    return sc
+    return make_response("", 200)
 
 if __name__ == '__main__':
    app.run()
