@@ -5,3 +5,4 @@ gunicorn==19.7.1
 slackclient==1.0.9
 requests==2.18.4
 beautifulsoup4==4.6.0
+lxml==3.6.4
