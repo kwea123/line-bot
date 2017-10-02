@@ -12,7 +12,7 @@ def hello():
     dict = request.get_data()
     sc = SlackClient(os.environ['slackbot'])
     sc.api_call("chat.postMessage",channel='#general',
-                text=dict['challenge'])
+                text=str(dict))
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
@@ -33,7 +33,7 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    return make_response("",200)
+    return make_response("challenge",200)
 
 if __name__ == '__main__':
    app.run()
