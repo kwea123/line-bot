@@ -1,4 +1,6 @@
-Flask==0.10.1
-Werkzeug==0.10.4
+Flask==0.12.2
+Werkzeug==0.12.2
 Jinja2==2.9.4
-gunicorn==19.6.0
+gunicorn==19.7.1
+slackclient==1.0.9
+requests==2.18.4
