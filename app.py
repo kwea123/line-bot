@@ -11,7 +11,7 @@ app = Flask(__name__)
 def hello():
     body = request.json
     sc = SlackClient(os.environ['slackbot'])
-    if 'username' not in body:
+    if 'username' not in body['event']:
         sc.api_call("chat.postMessage",channel='#general',
                     text=str(body))
 #     for ch in sc.api_call("channels.list")['channels']:
