@@ -1,7 +1,7 @@
 import os
 from slackclient import SlackClient
 # from bs4 import BeautifulSoup as bs
-# import requests
+import requests
 from flask import Flask, request, make_response, Response
 import json
 app = Flask(__name__)
@@ -11,13 +11,11 @@ app = Flask(__name__)
 def hello():
     body = request.json
     sc = SlackClient(os.environ['slackbot'])
-    if 'username' not in body['event']:
-        sc.api_call("chat.postMessage",channel='#general',
-                    text=str(body))
-#     for ch in sc.api_call("channels.list")['channels']:
-#         if ch['name'] == 'general':
-#             ch_general = ch['id']
-#     sc.rtm_connect()
+    e = body['event']
+    if e['type'] == 'message' and 'username' not in e:
+        if 'beauty in 'e['text']:
+            sc.api_call("chat.postMessage",channel='#general',
+                        text=str(e))
 #     while True:
 #         for e in sc.rtm_read():
 #             if e['type'] == 'message' and e['channel'] == ch_general and 'username' not in e: # only respond to general channel and non bot users
