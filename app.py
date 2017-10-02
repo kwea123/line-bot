@@ -12,7 +12,7 @@ def hello():
     dict = request.json
     sc = SlackClient(os.environ['slackbot'])
     sc.api_call("chat.postMessage",channel='#general',
-                text='df')
+                text=str(dict))
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
