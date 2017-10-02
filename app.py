@@ -13,7 +13,7 @@ def hello():
     sc = SlackClient(os.environ['slackbot'])
     e = body['event']
     if e['type'] == 'message' and 'username' not in e:
-        if 'beauty in 'e['text']:
+        if e['text'] == 'beauty':
             sc.api_call("chat.postMessage",channel='#general',
                         text=str(e))
 #     while True:
