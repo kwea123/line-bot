@@ -11,7 +11,7 @@ app = Flask(__name__)
 def hello():
     sc = SlackClient(os.environ['slackbot'])
     sc.api_call("chat.postMessage",channel='#general',
-                text=request.data)
+                text=request.get_data())
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
@@ -32,7 +32,8 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    return make_response(request.data['challenge'],200)
+    body = {'challenge':'asd'}
+    return make_response(request.get_data(),200)
 
 if __name__ == '__main__':
    app.run()
