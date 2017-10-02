@@ -13,7 +13,7 @@ def hello():
         if ch['name'] == 'general':
             ch_general = ch['id']
     sc.api_call("chat.postMessage",channel='#general',
-                text=request.data)
+                text=str(request.data))
 #     sc.rtm_connect()
 #     while True:
 #         for e in sc.rtm_read():
