@@ -3,6 +3,7 @@ from slackclient import SlackClient
 # from bs4 import BeautifulSoup as bs
 # import requests
 from flask import Flask, request, make_response, Response
+import json
 app = Flask(__name__)
 
 
@@ -31,7 +32,8 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    return make_response("",200)
+    body = {'challenge':request.args.get('challenge')}
+    return json.dump(body)
 
 if __name__ == '__main__':
    app.run()
