@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST'])
 def hello():
-    dict = dict(request.get_data())
+    dict = request.json
     sc = SlackClient(os.environ['slackbot'])
     sc.api_call("chat.postMessage",channel='#general',
                 text='df')
