@@ -31,7 +31,7 @@ def hello():
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
 #                 sc.api_call("chat.postMessage",channel=e['channel'],
 #                 text=text)
-    return make_response("", 200)
+    return make_response(request.form['challenge'], 200)
 
 if __name__ == '__main__':
    app.run()
