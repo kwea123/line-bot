@@ -9,14 +9,16 @@ app = Flask(__name__)
 @app.route("/", methods=['POST'])
 def hello():
     sc = SlackClient(os.environ['slackbot'])
-    for ch in sc.api_call("channels.list")['channels']:
-        if ch['name'] == 'general':
-            ch_general = ch['id']
-    sc.rtm_connect()
-    while True:
-        for e in sc.rtm_read():
-            if e['type'] == 'message' and e['channel'] == ch_general and 'username' not in e: # only respond to general channel and non bot users
-                text = "hello"
+    sc.api_call("chat.postMessage",channel='#general',
+                text='text')
+#     for ch in sc.api_call("channels.list")['channels']:
+#         if ch['name'] == 'general':
+#             ch_general = ch['id']
+#     sc.rtm_connect()
+#     while True:
+#         for e in sc.rtm_read():
+#             if e['type'] == 'message' and e['channel'] == ch_general and 'username' not in e: # only respond to general channel and non bot users
+#                 text = "hello"
 #                 r = requests.get("https://www.ptt.cc/bbs/beauty/index.html")
 #                 soup = bs(r.text,"lxml")
 #                 page = soup.find("div", class_="btn-group-paging")
@@ -27,8 +29,8 @@ def hello():
 #                     a = div.find_all("a")
 #                     if len(a)>0:
 #                         text += "https://www.ptt.cc"+a[0]['href']+'\n'
-                sc.api_call("chat.postMessage",channel=e['channel'],
-                text=text)
+#                 sc.api_call("chat.postMessage",channel=e['channel'],
+#                 text=text)
     return make_response("", 200)
 
 if __name__ == '__main__':
