@@ -11,8 +11,9 @@ app = Flask(__name__)
 def hello():
     body = request.json
     sc = SlackClient(os.environ['slackbot'])
-    sc.api_call("chat.postMessage",channel='#general',
-                text=str(body)
+    if body['username'] != 'testapp':
+        sc.api_call("chat.postMessage",channel='#general',
+                    text=str(body))
 #     for ch in sc.api_call("channels.list")['channels']:
 #         if ch['name'] == 'general':
 #             ch_general = ch['id']
